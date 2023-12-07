@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EditTenant</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-spacing: 0px;
+        }
+        th, td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Edit Tenant</h2>
+<form action="/editTenant" method="get" >
+    <input style="display:none" th:value = "${search}" type = "text" id = "id" name = "id"/>
+    Apartment Number
+    <br />
+    <input type = "text" id = "apartNum" name = "apartNum"/>
+    <br />
+    <input type="submit" value = "Update Apartment Number"/>
+</form>
+
+<form action = "/tenant_table" method="POST">
+    <input type = "submit" value = "Back">
+</form>
+
+</body>
+</html>

@@ -15,15 +15,40 @@ public class Tenant {
     private String emailAddr;
     private LocalDateTime checkIn;
     private LocalDateTime checkOut;
-    private int apartNum; // shared with Request
+    private String apartNum; // shared with Request
 
-    public Tenant(String name, String teleNum, String emailAddr, LocalDateTime checkIn, LocalDateTime checkOut, int apartNum){
+    public Tenant(String name, String teleNum, String emailAddr, String apartNum){
         this.name = name;
         this.teleNum=teleNum;
         this.emailAddr=emailAddr;
-        this.checkIn=checkIn;
-        this.checkOut=checkOut;
+        checkIn= LocalDateTime.now();;
+        checkOut= checkIn.plusMonths(6);
         this.apartNum=apartNum;
     }
 
+    public String getTenantID(){
+        return tenantID;
+    }
+    public String getName(){
+        return name;
+    }
+    public String getTeleNum(){
+        return teleNum;
+    }
+    public String getEmailAddr(){
+        return emailAddr;
+    }
+    public LocalDateTime getCheckIn(){
+        return checkIn;
+    }
+    public LocalDateTime getCheckOut(){
+        return checkOut;
+    }
+    public String getApartNum(){
+        return apartNum;
+    }
+
+    public void setTenantID(String tenantID) {
+        this.tenantID = tenantID;
+    }
 }

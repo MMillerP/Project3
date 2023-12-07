@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>TenantTable</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-spacing: 0px;
+        }
+        th, td {
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
 <table>
@@ -14,28 +23,34 @@
     <th>Email Address</th>
     <th>Check In</th>
     <th>Check Out</th>
+    <th>Apartment Number</th>
+    <th>Edit</th>
+    <th>Delete</th>
 </tr>
 </thead>
 <tbody>
-<tr th:each="cust : ${custList}">
-    <td th:text="${cust.id}"></td>
-    <td th:text="${cust.name}"></td>
-    <td th:text="${cust.desc}"></td>
-    <td>Filler</td>
-    <td><form action = "/editRedirectCustomer" method = "GET">
+<tr th:each="tenant : ${tenantList}">
+    <td th:text="${tenant.tenantID}"></td>
+    <td th:text="${tenant.name}"></td>
+    <td th:text="${tenant.teleNum}"></td>
+    <td th:text="${tenant.emailAddr}"></td>
+    <td th:text="${tenant.checkIn}"></td>
+    <td th:text="${tenant.checkOut}"></td>
+    <td th:text="${tenant.apartNum}"></td>
+    <td><form action = "/editRedirectTenant" method = "GET">
         <input type="text"
                name="search"
                id="editRedirect"
-               th:value="${cust.id}"
+               th:value="${tenant.tenantID}"
                style="display:none"
         />
         <input type = "submit" value = "X"/>
     </form></td>
-    <td><form action = "/deleteCustomer" method = "GET">
+    <td><form action = "/deleteTenant" method = "GET">
         <input type = "text"
-               name = "deleteCustomer"
-               id = "deleteCustomer"
-               th:value = "${cust.id}"
+               name = "deleteTenant"
+               id = "deleteTenant"
+               th:value = "${tenant.tenantID}"
                style="display:none"
         >
         <input type = "submit" value = "X"/>
@@ -43,6 +58,30 @@
 </tr>
 </tbody>
 </table>
+<h2>Add Tenant</h2>
+<form action="/addTenant" method="POST">
+    Name
+    <br />
+    <input type="text" id="name" name="name" />
+    <br />
+    Telephone Number
+    <br />
+    <input type = "text" id="teleNum" name="teleNum">
+    <br />
+    EmailAddress
+    <br />
+    <input type = "text" id="emailAddr" name="emailAddr">
+    <br />
+    Apartment Number
+    <br />
+    <input type = "text" id="apartNum" name="apartNum">
+    <br />
+    <input type="submit" value = "Enter Customer"/>
+    <br />
+</form>
 
+<form action = "/home" method="POST">
+    <input type = "submit" value = "Back">
+</form>
 </body>
 </html>
