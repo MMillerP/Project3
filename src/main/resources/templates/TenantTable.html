@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TenantTable</title>
+</head>
+<body>
+<table>
+<thead>
+<tr>
+    <th>Tenant ID</th>
+    <th>Name</th>
+    <th>Phone Number</th>
+    <th>Email Address</th>
+    <th>Check In</th>
+    <th>Check Out</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="cust : ${custList}">
+    <td th:text="${cust.id}"></td>
+    <td th:text="${cust.name}"></td>
+    <td th:text="${cust.desc}"></td>
+    <td>Filler</td>
+    <td><form action = "/editRedirectCustomer" method = "GET">
+        <input type="text"
+               name="search"
+               id="editRedirect"
+               th:value="${cust.id}"
+               style="display:none"
+        />
+        <input type = "submit" value = "X"/>
+    </form></td>
+    <td><form action = "/deleteCustomer" method = "GET">
+        <input type = "text"
+               name = "deleteCustomer"
+               id = "deleteCustomer"
+               th:value = "${cust.id}"
+               style="display:none"
+        >
+        <input type = "submit" value = "X"/>
+    </form></td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

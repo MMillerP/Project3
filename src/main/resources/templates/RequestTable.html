@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RequestTable</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-spacing: 0px;
+        }
+        th, td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Request ID</th>
+        <th><form action = "/sortANum">
+            <input type = "submit" value = "Apartment Number"></form></th>
+        <th><form action = "/sortAreaProblem">
+            <input type = "submit" value = "Area of Problem"></form></th>
+        <th>Description of Problem</th>
+        <th><form action = "/sortDateTime">
+            <input type = "submit" value = "Time of Request"></form></th>
+        <th><form action = "/sortStatus">
+            <input type = "submit" value = "Status"></form></th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="req : ${requestList}">
+        <td th:text="${req.RequestID}"></td>
+        <td th:text="${req.apartNum}"></td>
+        <td th:text="${req.areaProblem}"></td>
+        <td th:text="${req.descProblem}"></td>
+        <td th:text="${req.reqTime}"></td>
+
+
+
+        <td><form th:action = "@{/request_table/change_status/}">
+            <input type="text"
+                   th:name = "id"
+                   th:value = "${req.RequestID}"
+                   name="changeStatus"
+                   id="changeStatus"
+                   style="display:none"
+            />
+            <input type = "submit" th:value = "${req.status}"/>
+        </form>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
